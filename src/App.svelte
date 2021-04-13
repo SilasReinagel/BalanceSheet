@@ -30,8 +30,10 @@
 		<h1>Balance Sheet</h1>
 	</div>
 	<div class="tiles">
-		<EntryTable name="Income" onTotalChanged={updateTotalIncome}/>
-		<EntryTable name="Expense" onTotalChanged={updateTotalExpense}/>
+		<EntryTable name="Incomes" onTotalChanged={updateTotalIncome}/>
+		<EntryTable name="Expenses" onTotalChanged={updateTotalExpense}/>
+	</div>
+	<div class="tiles">
 		<EntryTable name="Assets" onTotalChanged={updateTotalAssets}/>
 		<EntryTable name="Liabilities" onTotalChanged={updateTotalLiabilities}/>
 	</div>
@@ -41,21 +43,24 @@
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
+		max-width: 96vw;
 		margin: 0 auto;
 	}
 
 	.title {
 		background-color: #fff;
 		border-radius: 6px;
-		margin: 1em 0;
+		margin: 1em auto;
+		max-width: 90vw;
+		width: 500px;
+		min-width: 350px;
 	}
 
 	h1 {
 		color: #000;
 		font-size: 3em;
 		padding: 16px 0;
+		margin: 0;
 	}
 
 	.tiles {
@@ -63,6 +68,9 @@
 		flex-wrap: wrap;
 		flex-direction: row;
 		justify-content: center;
+		max-width: 64em;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	@media (min-width: 640px) {

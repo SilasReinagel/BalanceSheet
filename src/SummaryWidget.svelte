@@ -22,12 +22,14 @@
 </script>
 
 <div class="root">
-  <h2>Daily Cashflow: {dollars(dailyCashflow)}</h2>
-  <h2>Weekly Cashflow: {dollars(weeklyCashflow)}</h2>
-  <h2>Monthly Cashflow: {dollars(monthlyCashflow)}</h2>
-  <h2>Yearly Cashflow: {dollars(yearlyCashflow)}</h2>
+  <h2>Cashflow</h2>
+  <h3>Daily: {dollars(dailyCashflow)}</h3>
+  <h3>Weekly: {dollars(weeklyCashflow)}</h3>
+  <h3>Monthly: {dollars(monthlyCashflow)}</h3>
+  <h3>Yearly: {dollars(yearlyCashflow)}</h3>
   <hr/>
-  <h2>Net Worth: {dollars(totalAssets - totalLiabilities)}</h2>
+  <h2>Net Worth</h2>
+  <h3>{dollars(totalAssets - totalLiabilities)}</h3>
 </div>
 
 <style>
@@ -37,7 +39,8 @@
     margin-left: auto;
     margin-right: auto;
     width: 500px;
-    max-width: 100vw;
+    max-width: 90vw;
+    min-width: 350px;
 		background-color: #fff;
 		border-radius: 6px;
     display: flex;
@@ -50,5 +53,15 @@
   h2 {
     margin-top: 8px;
     margin-bottom: 8px;
+  }
+
+  h3 {
+    margin: 2px;
+  }
+
+  hr {
+    margin-top: 1em;
+    width: 100%;
+    border-top: 1px solid #000;
   }
 </style>
