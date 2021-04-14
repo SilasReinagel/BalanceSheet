@@ -6,9 +6,7 @@
 
   let localData = [];
 
-  afterUpdate(() => {
-    localData = data;
-  });
+  afterUpdate(() => { localData = data; });
 
   const updateName = (e, id) => {
     const val = e.target.value;

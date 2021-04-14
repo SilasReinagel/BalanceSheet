@@ -2,6 +2,7 @@
   export let name = "Table";
   export let data = [{ id: 0, name: "", amount: "" }];
   export let onTotalChanged = t => {};
+  export let onDataChanged = d => {};
 
   import DataRows from './EntryTableRows.svelte';
 
@@ -20,6 +21,7 @@
   const update = () => {
     total = data.map(x => new Number(x.amount)).reduce((a, v) => a + v);
     onTotalChanged(total);
+    onDataChanged(data);
 
     if (data.every(x => x.name.length > 0))
       addNew();

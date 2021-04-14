@@ -1,28 +1,20 @@
 <script>
 	import EntryTable from './EntryTable.svelte';
 	import Summary from './SummaryWidget.svelte';
+	import createBalanceSheet from './Backend/BalanceSheet.js';
+	import saveFile from './Backend/SaveTxtFile.js';
+	import CsvIcon from './Icons/CsvDownload.svelte';
 
-	let totalIncome = 0;
-	let totalExpense = 0;
-	let totalAssets = 0;
-	let totalLiabilities = 0;
+	let sheet = createBalanceSheet([], [], [], []);
 
-	const updateTotalIncome = t => {
-		totalIncome = t;
-	}
+	const getDateString = () => new Date().toLocaleDateString('en-US', {
+		day: '2-digit',
+		month: '2-digit',
+		year: '2-digit',
+	}).replaceAll('/', '');
 
-	const updateTotalExpense = t => {
-		totalExpense = t;
-	}
-
-	const updateTotalAssets = t => {
-		totalAssets = t;
-	}
-
-	const updateTotalLiabilities = t => {
-		totalLiabilities = t;
-	}
-
+	const updateIncomes = d => { sheet = sheet.updated(() => sheet.incomes = d); }
+	const downloadCsv = t => { saveFile(sheet.toCsv(), `EZBalanceSheet-${getDateString()}.csv`);	}
 </script>
 
 <main>
@@ -30,14 +22,19 @@
 		<h1>Balance Sheet</h1>
 	</div>
 	<div class="tiles">
-		<EntryTable name="Incomes" onTotalChanged={updateTotalIncome}/>
-		<EntryTable name="Expenses" onTotalChanged={updateTotalExpense}/>
+		<EntryTable name="Incomes" onDataChanged={d => sheet.updated(() => sheet.incomes = d)}/>
+		<EntryTable name="Expenses" onDataChanged={d => sheet.updated(() => sheet.expenses = d)}/>
 	</div>
 	<div class="tiles">
-		<EntryTable name="Assets" onTotalChanged={updateTotalAssets}/>
-		<EntryTable name="Liabilities" onTotalChanged={updateTotalLiabilities}/>
+		<EntryTable name="Assets" onDataChanged={d => sheet.updated(() => sheet.assets = d)}/>
+		<EntryTable name="Liabilities" onDataChanged={d => sheet.updated(() => sheet.liabilities = d)}/>
 	</div>
-	<Summary totalIncome={totalIncome} totalExpense={totalExpense} totalAssets={totalAssets} totalLiabilities={totalLiabilities}/>
+	<Summary balanceSheet={sheet}/>
+
+	<div class="controls row">
+		<h2>Export:</h2>
+		<button on:click={downloadCsv}><CsvIcon/></button>
+	</div>
 </main>
 
 <style>
@@ -71,6 +68,32 @@
 		max-width: 64em;
 		margin-left: auto;
 		margin-right: auto;
+	}
+
+	.controls {
+		padding-left: 1em;
+		padding-right: 1em;
+		background-color: #fff;
+		border-radius: 6px;
+		margin: 1em auto;
+		max-width: 90vw;
+		width: 500px;
+		min-width: 350px;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	button {
+		border: 0px;
+		background-color: rgba(1,1,1,0);
+	}
+
+	button:hover {
+		background-color: #dedede;
 	}
 
 	@media (min-width: 640px) {

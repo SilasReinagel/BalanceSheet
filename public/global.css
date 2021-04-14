@@ -26,7 +26,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
 
 @font-face {
   font-family: 'Sans';
-  src: url('/fonts/Poppins-Regular.ttf')  format('truetype');
+  src: url('/fonts/OpenSans-Regular.ttf')  format('truetype');
   font-display: swap;
 }
 

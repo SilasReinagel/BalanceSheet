@@ -1,35 +1,18 @@
 <script>
-	export let totalIncome = 0;
-	export let totalExpense = 0;
-	export let totalAssets = 0;
-  export let totalLiabilities = 0;
+	export let balanceSheet;
 
-  import { afterUpdate } from 'svelte';
-
-  let monthlyCashflow = (totalIncome - totalExpense);
-  let yearlyCashflow = (totalIncome - totalExpense) * 12;
-  let weeklyCashflow = yearlyCashflow / 52;
-  let dailyCashflow = yearlyCashflow / 365;
-
-  const dollars = n => '$' + `${n.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}`;
-
-  afterUpdate(() => {
-    monthlyCashflow = totalIncome - totalExpense;
-    yearlyCashflow = (totalIncome - totalExpense) * 12;
-    weeklyCashflow = yearlyCashflow / 52;
-    dailyCashflow = yearlyCashflow / 365;
-  })
+  const dollars = n => '$' + `${(!!n ? n : 0).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}`;
 </script>
 
 <div class="root">
   <h2>Cashflow</h2>
-  <h3>Daily: {dollars(dailyCashflow)}</h3>
-  <h3>Weekly: {dollars(weeklyCashflow)}</h3>
-  <h3>Monthly: {dollars(monthlyCashflow)}</h3>
-  <h3>Yearly: {dollars(yearlyCashflow)}</h3>
+  <h3>Daily: {dollars(balanceSheet.dailyCashflow)}</h3>
+  <h3>Weekly: {dollars(balanceSheet.weeklyCashflow)}</h3>
+  <h3>Monthly: {dollars(balanceSheet.monthlyCashflow)}</h3>
+  <h3>Yearly: {dollars(balanceSheet.yearlyCashflow)}</h3>
   <hr/>
   <h2>Net Worth</h2>
-  <h3>{dollars(totalAssets - totalLiabilities)}</h3>
+  <h3>{dollars(balanceSheet.netWorth)}</h3>
 </div>
 
 <style>
