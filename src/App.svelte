@@ -3,7 +3,6 @@
 	import Summary from './SummaryWidget.svelte';
 	import createBalanceSheet from './Backend/BalanceSheet.js';
 	import saveFile from './Backend/SaveTxtFile.js';
-	import CsvIcon from './Icons/CsvDownload.svelte';
 
 	let sheet = createBalanceSheet([], [], [], []);
 
@@ -13,8 +12,9 @@
 		year: '2-digit',
 	}).replaceAll('/', '');
 
-	const updateIncomes = d => { sheet = sheet.updated(() => sheet.incomes = d); }
-	const downloadCsv = t => { saveFile(sheet.toCsv(), `EZBalanceSheet-${getDateString()}.csv`);	}
+	const updateIncomes = d => { sheet = sheet.updated(() => sheet.incomes = d); };
+	const downloadCsv = t => { saveFile(sheet.toCsv(), `EZBalanceSheet-${getDateString()}.csv`);};
+	const downloadJson = t => { saveFile(JSON.stringify(sheet), `EZBalanceSheet-${getDateString()}.json`); };
 </script>
 
 <main>
@@ -33,9 +33,21 @@
 
 	<div class="controls row">
 		<h2>Export:</h2>
-		<button on:click={downloadCsv}><CsvIcon/></button>
+		<div class="row">
+			<button on:click={downloadJson}>
+				<div class="icon">
+					<img src="/images/json.png" alt="Download JSON"/>
+				</div>
+			</button>
+			<button on:click={downloadCsv}>
+				<div class="icon">
+					<img src="/images/csv.png" alt="Download CSV"/>
+				</div>
+			</button>
+		</div>
 	</div>
 </main>
+
 
 <style>
 	main {
@@ -94,6 +106,11 @@
 
 	button:hover {
 		background-color: #dedede;
+	}
+
+	.icon {
+		width: 48px;
+		height: 48px;
 	}
 
 	@media (min-width: 640px) {

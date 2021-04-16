@@ -1,7 +1,7 @@
 const sumAmount = d => d.map(x => new Number(x.amount)).reduce((a, v) => a + v, 0);
 
 const nameFor = (arr, i) => arr.length > i ? arr[i].name : "";
-const amountFor = (arr, i) => arr.length > i ? arr[i].amount : 0;
+const amountFor = (arr, i) => arr.length > i ? arr[i].amount : "";
 const csvEnclosedVal = (val) => (typeof val == "string") ? '"' + val + '"' : val;
 const csvRow = (vals) => vals.map(v => csvEnclosedVal(v)).join(",");
 const toCsv = (sheet) => {
