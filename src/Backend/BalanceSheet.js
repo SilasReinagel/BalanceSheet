@@ -4,6 +4,7 @@ const nameFor = (arr, i) => arr.length > i ? arr[i].name : "";
 const amountFor = (arr, i) => arr.length > i ? arr[i].amount : "";
 const csvEnclosedVal = (val) => (typeof val == "string") ? '"' + val + '"' : val;
 const csvRow = (vals) => vals.map(v => csvEnclosedVal(v)).join(",");
+const byValueNumberDesc = (a, b) => new Number(b.amount) - new Number(a.amount);
 const toCsv = (sheet) => {
   const csv = [];
   csv.push(csvRow(["Incomes", "", "Expenses", "", "Assets", "", "Liabilities", "", "Net Worth", "MonthlyCashflow"]));
@@ -48,6 +49,13 @@ const balanceSheet = (incomes, expenses, assets, liabilities) =>
     sheet.yearlyCashflow = sheet.monthlyCashflow * 12;
     sheet.weeklyCashflow = sheet.yearlyCashflow / 52;
     sheet.dailyCashflow = sheet.yearlyCashflow / 365;
+    return sheet;
+  };
+  sheet.sortedByValue = () => {
+    sheet.incomes.sort(byValueNumberDesc);
+    sheet.expenses.sort(byValueNumberDesc);
+    sheet.assets.sort(byValueNumberDesc);
+    sheet.liabilities.sort(byValueNumberDesc);
     return sheet;
   };
   return sheet.updated(() => {});
