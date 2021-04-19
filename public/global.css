@@ -7,10 +7,11 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
   --primary-color-light: #dedede;
   --primary-color-hover: #acacac;
   --primary-background-color: #1c2e4a;
-  --secondary-color: #1f0045;
+  --secondary-color: #000;
   --secondary-color-hover: #2f0067;
   --secondary-color-press: #4f0098;
   --secondary-color-text: #fff;
+  --secondary-background-color: #fff;
   --alternate-color:#e6e0f8;
   --alternate-background-color: #17111a;
   --alternate-color-light:#00dce8;
