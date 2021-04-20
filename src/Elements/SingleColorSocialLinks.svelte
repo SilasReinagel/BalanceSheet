@@ -46,6 +46,11 @@
     <img src="/social/itchio.svg" alt="Itch.io Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
+  {#if company.social.github}
+  <a class="social-icon github-purple" href={company.social.github} target=”_blank”>
+    <img src="/social/github.svg" alt="Github Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+  </a>
+  {/if}
 </div>
 
 <style>
@@ -98,5 +103,9 @@
 
   .reddit-orange img:hover {
     filter: invert(34%) sepia(80%) saturate(4444%) hue-rotate(4deg) brightness(106%) contrast(102%);
+  }
+
+  .github-purple img:hover {
+    filter: invert(36%) sepia(17%) saturate(1380%) hue-rotate(222deg) brightness(95%) contrast(88%);
   }
 </style>

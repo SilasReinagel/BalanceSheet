@@ -8,8 +8,10 @@ const site = ({
   logoMobile: './favicon.png',
   address: null,
   contactPrompt: 'Want to setup an interview?<br>Got feedback on my game?<br>Send me a message',
+  sourceCode: 'https://github.com/SilasReinagel/BalanceSheet',
   social: {
     twitter: 'https://twitter.com/SilasReinagel',
+    github: 'https://github.com/SilasReinagel',
   },
 });
 

@@ -8,11 +8,6 @@
 
 <footer>
   <div class="row">
-    <p class="disclaimer">Your privacy is protected 100%. This web application is stateless. None of your information is tracked. 
-      There are no cookies. None of your data is stored or captured.</p>
-  </div>
-
-  <div class="row">
     <p>© {year} {company.siteOwner}</p>
 
     <SingleColorSocialLinks/>
@@ -24,7 +19,7 @@
 <style>
   footer {
     padding: 12px 18px;
-    height: 8.4em;
+    height: 5.4em;
     background-color: var(--primary-background-color);
     color: #dedede;
 
@@ -43,14 +38,6 @@
 
   p {
     color: #dedede;
-  }
-
-  .disclaimer {
-    color: #dedede;
-    max-width: 48em;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .row {

@@ -23,12 +23,17 @@
       <a class="navlink decor-font" href={page.href}>{page.name}</a>
     {/each} -->
     {#if site.social.twitter}
-      <a class="twitter-link mobile-hidden" href={site.social.twitter}>
+      <a class="link mobile-hidden" href={site.social.twitter}>
         <img src="/social/twitter-multi-color.png" alt="Twitter Icon"/>
       </a>
     {/if}
+    {#if site.social.github}
+      <a class="link mobile-hidden" href={site.sourceCode}>
+        <img src="/social/github-multi-color.png" alt="Github Icon"/>
+      </a>
+    {/if}
     {#if site.social.reddit}
-      <a class="reddit-link mobile-hidden" href={site.social.reddit}>
+      <a class="link mobile-hidden" href={site.social.reddit}>
         <img src="/social/reddit-multi-color.png" alt="Reddit Icon"/>
       </a>
     {/if}
@@ -101,27 +106,15 @@
     text-align: center;
   }
 
-  .twitter-link img {
+  .link img {
     filter: none;
   }
 
-  .twitter-link:hover {
+  .link:hover {
 		background-color: #dedede;
   }
 
-  .twitter-link:active {
-		background-color: #dedede;
-  }
-
-  .reddit-link img {
-    filter: none;
-  }
-
-  .reddit-link:hover {
-		background-color: #dedede;
-  }
-
-  .reddit-link:active {
+  .link:active {
 		background-color: #dedede;
   }
 </style>

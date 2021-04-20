@@ -3,9 +3,11 @@
 	import Summary from './SummaryWidget.svelte';
 	import DefaultLayout from './Layout/DefaultLayout.svelte';
 	import createBalanceSheet from './Backend/BalanceSheet.js';
+	import PrivacySummary from './PrivacySummary.svelte';
 	import saveFile from './Backend/SaveTxtFile.js';
 
-	let sheet = createBalanceSheet([{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }]);
+	const createNewBalanceSheet = () => createBalanceSheet([{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }]);
+	let sheet = createNewBalanceSheet();
 
 	const getDateString = () => new Date().toLocaleDateString('en-US', {
 		day: '2-digit',
@@ -17,11 +19,12 @@
 	const downloadCsv = t => { saveFile(sheet.toCsv(), `EZBalanceSheet-${getDateString()}.csv`);};
 	const downloadJson = t => { saveFile(JSON.stringify(sheet), `EZBalanceSheet-${getDateString()}.json`); };
 	const sortByValue = t => { sheet = sheet.sortedByValue(); };
+	const clear = t => { sheet = createNewBalanceSheet(); };
 </script>
 
 <main>
 	<DefaultLayout>
-		<div class="spacer"/>
+		<PrivacySummary/>
 		<div class="tiles">
 			<EntryTable name="Incomes" data={sheet.incomes} onDataChanged={d => sheet.updated(() => sheet.incomes = d)}/>
 			<EntryTable name="Expenses" data={sheet.expenses} onDataChanged={d => sheet.updated(() => sheet.expenses = d)}/>
@@ -35,20 +38,29 @@
 		<div class="controls row">
 			<div class="row">
 				<button on:click={sortByValue}>
-					<div class="icon">
+					<div class="icon tooltip">
 						<img src="/images/sort.png" alt="Sort By Value"/>
+						<div class="tooltiptext">Sort By Value</div>
+					</div>
+				</button>
+				<button on:click={clear}>
+					<div class="icon tooltip">
+						<img src="/images/clear.png" alt="Clear Sheet"/>
+						<div class="tooltiptext">Clear Sheet</div>
 					</div>
 				</button>
 			</div>
 			<div class="row">
 				<button on:click={downloadJson}>
-					<div class="icon">
+					<div class="icon tooltip">
 						<img src="/images/json.png" alt="Download JSON"/>
+						<div class="tooltiptext">Download JSON</div>
 					</div>
 				</button>
 				<button on:click={downloadCsv}>
-					<div class="icon">
+					<div class="icon tooltip">
 						<img src="/images/csv.png" alt="Download CSV"/>
+						<div class="tooltiptext">Download CSV</div>
 					</div>
 				</button>
 			</div>
@@ -62,10 +74,6 @@
 		text-align: center;
 		max-width: 100vw;
 		margin: 0 auto;
-	}
-
-	.spacer {
-		margin-top: 1.5em;
 	}
 
 	.spacer-2 {
