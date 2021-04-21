@@ -4,6 +4,7 @@
   export let onTotalChanged = t => {};
   export let onDataChanged = d => {};
 
+	import { afterUpdate } from 'svelte';
   import DataRows from './EntryTableRows.svelte';
 
   let total = 0;
@@ -11,12 +12,12 @@
   const addNew = () => {
     if (data.every(x => x.name.length > 0))
       setData([ ...data, { id: data.length, name: "", amount: "" }])
-  }
+  };
 
   const setData = d => {
     data = d;
     update();
-  }
+  };
 
   const update = () => {
     total = data.map(x => new Number(x.amount)).reduce((a, v) => a + v);
@@ -25,7 +26,9 @@
 
     if (data.every(x => x.name.length > 0))
       addNew();
-  }
+  };
+
+  afterUpdate(() => update());
 
   const dollars = n => '$' + `${n.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}`;
 </script>

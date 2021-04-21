@@ -2,11 +2,12 @@
 	import EntryTable from './EntryTable.svelte';
 	import Summary from './SummaryWidget.svelte';
 	import DefaultLayout from './Layout/DefaultLayout.svelte';
-	import createBalanceSheet from './Backend/BalanceSheet.js';
+	import { balanceSheet, balanceSheetFromJson } from './Backend/BalanceSheet.js';
 	import PrivacySummary from './PrivacySummary.svelte';
+	import TextFileUpload from './Elements/TextFileUpload.svelte';
 	import saveFile from './Backend/SaveTxtFile.js';
 
-	const createNewBalanceSheet = () => createBalanceSheet([{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }]);
+	const createNewBalanceSheet = () => balanceSheet([{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }]);
 	let sheet = createNewBalanceSheet();
 
 	const getDateString = () => new Date().toLocaleDateString('en-US', {
@@ -20,8 +21,11 @@
 	const downloadJson = t => { saveFile(JSON.stringify(sheet), `EZBalanceSheet-${getDateString()}.json`); };
 	const sortByValue = t => { sheet = sheet.sortedByValue(); };
 	const clear = t => { sheet = createNewBalanceSheet(); };
+	const onJsonImport = j => { sheet = balanceSheetFromJson(JSON.parse(j)); };
+	let beginUpload;
 </script>
 
+<TextFileUpload onTextLoaded={onJsonImport} bind:selectFile={beginUpload}/>
 <main>
 	<DefaultLayout>
 		<PrivacySummary/>
@@ -34,9 +38,14 @@
 			<EntryTable name="Liabilities" data={sheet.liabilities} onDataChanged={d => sheet.updated(() => sheet.liabilities = d)}/>
 		</div>
 		<Summary balanceSheet={sheet}/>
-
 		<div class="controls row">
 			<div class="row">
+				<button on:click={beginUpload}>
+					<div class="icon tooltip">
+						<img src="/images/upload.png" alt="Import JSON"/>
+						<div class="tooltiptext">Import JSON</div>
+					</div>
+				</button>
 				<button on:click={sortByValue}>
 					<div class="icon tooltip">
 						<img src="/images/sort.png" alt="Sort By Value"/>

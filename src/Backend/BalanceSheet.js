@@ -19,7 +19,7 @@ const toCsv = (sheet) => {
   return csv.join("\r\n");
 };
 
-const balanceSheet = (incomes, expenses, assets, liabilities) =>
+export const balanceSheet = (incomes, expenses, assets, liabilities) =>
 {
   const sheet = ({
     incomes,
@@ -61,4 +61,4 @@ const balanceSheet = (incomes, expenses, assets, liabilities) =>
   return sheet.updated(() => {});
 };
 
-export default balanceSheet;
+export const balanceSheetFromJson = (sheet) => balanceSheet(sheet.incomes, sheet.expenses, sheet.assets, sheet.liabilities);
