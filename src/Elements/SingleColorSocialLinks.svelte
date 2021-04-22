@@ -8,47 +8,47 @@
 <div class={hideMobile ? "social-links mobile-hidden" : "social-link"}>
   {#if company.social.soundcloud}
   <a class="social-icon soundcloud-orange" href={company.social.soundcloud} target=”_blank”>
-    <img src="/social/soundcloud.svg" alt="Soundcloud Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/soundcloud.svg" alt="Soundcloud Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.yelp}
   <a class="social-icon yelp-red" href={company.social.yelp} target=”_blank”>
-    <img src="/social/yelp.svg" alt="Yelp Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/yelp.svg" alt="Yelp Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.facebook}
   <a class="social-icon facebook-blue" href={company.social.facebook} target=”_blank”>
-    <img src="/social/facebook.svg" alt="Facebook Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/facebook.svg" alt="Facebook Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.twitter}
   <a class="social-icon twitter-blue" href={company.social.twitter} target=”_blank”>
-    <img src="/social/twitter.svg" alt="Twitter Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/twitter.svg" alt="Twitter Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.reddit}
   <a class="social-icon reddit-orange" href={company.social.reddit} target=”_blank”>
-    <img src="/social/reddit.svg" alt="Reddit Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/reddit.svg" alt="Reddit Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.twitch}
   <a class="social-icon twitch-purple" href={company.social.twitch} target=”_blank”>
-    <img src="/social/twitch.svg" alt="Twitch Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/twitch.svg" alt="Twitch Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.steam}
   <a class="social-icon steam-blue" href={company.social.steam} target=”_blank”>
-    <img src="/social/steam.svg" alt="Steam Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/steam.svg" alt="Steam Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.itchio}
   <a class="social-icon itch-orange" href={company.social.steam} target=”_blank”>
-    <img src="/social/itchio.svg" alt="Itch.io Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/itchio.svg" alt="Itch.io Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
   {#if company.social.github}
   <a class="social-icon github-purple" href={company.social.github} target=”_blank”>
-    <img src="/social/github.svg" alt="Github Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
+    <img src="social/github.svg" alt="Github Icon" loading="lazy" style="width: {iconWidth}; height: auto;"/>
   </a>
   {/if}
 </div>

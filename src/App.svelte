@@ -21,13 +21,14 @@
 	const downloadJson = t => { saveFile(JSON.stringify(sheet), `EZBalanceSheet-${getDateString()}.json`); };
 	const sortByValue = t => { sheet = sheet.sortedByValue(); };
 	const clear = t => { sheet = createNewBalanceSheet(); };
+	const eraseValues = t => { sheet = sheet.withClearedValues(); };
 	const onJsonImport = j => { sheet = balanceSheetFromJson(JSON.parse(j)); };
 	let beginUpload;
 </script>
 
 <TextFileUpload onTextLoaded={onJsonImport} bind:selectFile={beginUpload}/>
 <main>
-	<DefaultLayout>
+	<DefaultLayout pageName="App">
 		<PrivacySummary/>
 		<div class="tiles">
 			<EntryTable name="Incomes" data={sheet.incomes} onDataChanged={d => sheet.updated(() => sheet.incomes = d)}/>
@@ -40,35 +41,41 @@
 		<Summary balanceSheet={sheet}/>
 		<div class="controls row">
 			<div class="row">
+				<button on:click={clear}>
+					<div class="icon tooltip">
+						<img src="images/document.png" alt="New Sheet"/>
+						<div class="tooltiptext">New Sheet</div>
+					</div>
+				</button>
 				<button on:click={beginUpload}>
 					<div class="icon tooltip">
-						<img src="/images/upload.png" alt="Import JSON"/>
+						<img src="images/open.png" alt="Import JSON"/>
 						<div class="tooltiptext">Import JSON</div>
 					</div>
 				</button>
 				<button on:click={sortByValue}>
 					<div class="icon tooltip">
-						<img src="/images/sort.png" alt="Sort By Value"/>
+						<img src="images/sort.png" alt="Sort By Value"/>
 						<div class="tooltiptext">Sort By Value</div>
 					</div>
 				</button>
-				<button on:click={clear}>
+				<button on:click={eraseValues}>
 					<div class="icon tooltip">
-						<img src="/images/clear.png" alt="Clear Sheet"/>
-						<div class="tooltiptext">Clear Sheet</div>
+						<img src="images/erase.png" alt="Erase Values"/>
+						<div class="tooltiptext">Erase Values</div>
 					</div>
 				</button>
 			</div>
 			<div class="row">
 				<button on:click={downloadJson}>
 					<div class="icon tooltip">
-						<img src="/images/json.png" alt="Download JSON"/>
+						<img src="images/json.png" alt="Download JSON"/>
 						<div class="tooltiptext">Download JSON</div>
 					</div>
 				</button>
 				<button on:click={downloadCsv}>
 					<div class="icon tooltip">
-						<img src="/images/csv.png" alt="Download CSV"/>
+						<img src="images/csv.png" alt="Download CSV"/>
 						<div class="tooltiptext">Download CSV</div>
 					</div>
 				</button>

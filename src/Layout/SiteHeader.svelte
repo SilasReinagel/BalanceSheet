@@ -13,7 +13,7 @@
 <header class="">
   <nav class="navbar-left">
     <a class="steam-link" href="./">
-      <img src="/favicon.png" alt="Logo" width=38 height=38/>
+      <img src="favicon.png" alt="Logo" width=38 height=38/>
       <h1>{site.name}</h1>
     </a>
   </nav>
@@ -24,17 +24,17 @@
     {/each} -->
     {#if site.social.twitter}
       <a class="link mobile-hidden" href={site.social.twitter}>
-        <img src="/social/twitter-multi-color.png" alt="Twitter Icon"/>
+        <img src="social/twitter-multi-color.png" alt="Twitter Icon"/>
       </a>
     {/if}
     {#if site.social.github}
       <a class="link mobile-hidden" href={site.sourceCode}>
-        <img src="/social/github-multi-color.png" alt="Github Icon"/>
+        <img src="social/github-multi-color.png" alt="Github Icon"/>
       </a>
     {/if}
     {#if site.social.reddit}
       <a class="link mobile-hidden" href={site.social.reddit}>
-        <img src="/social/reddit-multi-color.png" alt="Reddit Icon"/>
+        <img src="social/reddit-multi-color.png" alt="Reddit Icon"/>
       </a>
     {/if}
   </nav>

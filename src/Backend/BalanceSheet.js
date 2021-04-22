@@ -58,6 +58,13 @@ export const balanceSheet = (incomes, expenses, assets, liabilities) =>
     sheet.liabilities.sort(byValueNumberDesc);
     return sheet;
   };
+  sheet.withClearedValues = () => {
+    sheet.incomes = sheet.incomes.map(x => ({ ...x, amount: ""}));
+    sheet.expenses = sheet.expenses.map(x => ({ ...x, amount: ""}));
+    sheet.assets = sheet.assets.map(x => ({ ...x, amount: ""}));
+    sheet.liabilities = sheet.liabilities.map(x => ({ ...x, amount: ""}));
+    return sheet.updated(() => {});
+  }
   return sheet.updated(() => {});
 };
 

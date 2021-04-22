@@ -18,12 +18,12 @@
     <div class="row center-vh center">
       {#if company.social.twitter}
         <a class="navlink" href={company.social.twitter}>
-          <img src="/social/twitter-multi-color.png" alt="Twitter Icon"/>
+          <img src="social/twitter-multi-color.png" alt="Twitter Icon"/>
         </a>
       {/if}
       {#if company.social.reddit}
         <a class="navlink" href={company.social.reddit}>
-          <img src="/social/reddit-multi-color.png" alt="Reddit Icon"/>
+          <img src="social/reddit-multi-color.png" alt="Reddit Icon"/>
         </a>
       {/if}
     </div>
