@@ -5,6 +5,7 @@
 	import { balanceSheet, balanceSheetFromJson } from './Backend/BalanceSheet.js';
 	import PrivacySummary from './PrivacySummary.svelte';
 	import TextFileUpload from './Elements/TextFileUpload.svelte';
+	import IconButton from './Elements/IconButton.svelte';
 	import saveFile from './Backend/SaveTxtFile.js';
 
 	const createNewBalanceSheet = () => balanceSheet([{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }]);
@@ -29,6 +30,18 @@
 <TextFileUpload onTextLoaded={onJsonImport} bind:selectFile={beginUpload}/>
 <main>
 	<DefaultLayout pageName="App">
+		<div class="controls-bar row">
+			<div class="row">
+				<IconButton name="New Sheet" icon="images/document.png", onClick={clear}/>
+				<IconButton name="Import JSON" icon="images/open.png", onClick={beginUpload} mobileHidden={true}/>
+				<IconButton name="Sort By Value" icon="images/sort.png", onClick={sortByValue}/>
+				<IconButton name="Erase Values" icon="images/erase.png", onClick={eraseValues}/>
+			</div>
+			<div class="row">
+				<IconButton name="Download JSON" icon="images/json.png", onClick={downloadJson} mobileHidden={true}/>
+				<IconButton name="Download CSV" icon="images/csv.png", onClick={downloadCsv} mobileHidden={true}/>
+			</div>
+		</div>
 		<PrivacySummary/>
 		<div class="tiles">
 			<EntryTable name="Incomes" data={sheet.incomes} onDataChanged={d => sheet.updated(() => sheet.incomes = d)}/>
@@ -39,48 +52,6 @@
 			<EntryTable name="Liabilities" data={sheet.liabilities} onDataChanged={d => sheet.updated(() => sheet.liabilities = d)}/>
 		</div>
 		<Summary balanceSheet={sheet}/>
-		<div class="controls row">
-			<div class="row">
-				<button on:click={clear}>
-					<div class="icon tooltip">
-						<img src="images/document.png" alt="New Sheet"/>
-						<div class="tooltiptext">New Sheet</div>
-					</div>
-				</button>
-				<button on:click={beginUpload}>
-					<div class="icon tooltip">
-						<img src="images/open.png" alt="Import JSON"/>
-						<div class="tooltiptext">Import JSON</div>
-					</div>
-				</button>
-				<button on:click={sortByValue}>
-					<div class="icon tooltip">
-						<img src="images/sort.png" alt="Sort By Value"/>
-						<div class="tooltiptext">Sort By Value</div>
-					</div>
-				</button>
-				<button on:click={eraseValues}>
-					<div class="icon tooltip">
-						<img src="images/erase.png" alt="Erase Values"/>
-						<div class="tooltiptext">Erase Values</div>
-					</div>
-				</button>
-			</div>
-			<div class="row">
-				<button on:click={downloadJson}>
-					<div class="icon tooltip">
-						<img src="images/json.png" alt="Download JSON"/>
-						<div class="tooltiptext">Download JSON</div>
-					</div>
-				</button>
-				<button on:click={downloadCsv}>
-					<div class="icon tooltip">
-						<img src="images/csv.png" alt="Download CSV"/>
-						<div class="tooltiptext">Download CSV</div>
-					</div>
-				</button>
-			</div>
-		</div>
 		<div class="spacer-2"/>
 	</DefaultLayout>
 </main>
@@ -106,38 +77,18 @@
 		margin-right: auto;
 	}
 
-	.controls {
-		padding-left: 1em;
-		padding-right: 1em;
-		padding-top: 0.3em;
-		padding-bottom: 0.3em;
+	.controls-bar {
+		width: 100%;
 		background-color: #fff;
-		border-radius: 6px;
-		margin: 1em auto;
-		max-width: 90vw;
-		width: 500px;
-		min-width: 350px;
+		padding: 0 2.4em;
+		border-top: 1px solid #dadce0;
+		border-bottom: 1px solid #dadce0;
 	}
 
 	.row {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-	}
-
-	button {
-		border: 0px;
-		padding: 0.4em;
-		background-color: rgba(1,1,1,0);
-	}
-
-	button:hover {
-		background-color: #dedede;
-	}
-
-	.icon {
-		width: 48px;
-		height: 48px;
 	}
 
 	@media (min-width: 640px) {

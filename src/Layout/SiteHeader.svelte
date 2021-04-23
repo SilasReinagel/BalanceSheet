@@ -49,7 +49,7 @@
     align-items: center;
     align-content: center;
     box-sizing: content-box;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #fff;
     height: 60px;
     z-index: 1;
   }

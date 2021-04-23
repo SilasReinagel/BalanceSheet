@@ -167,7 +167,7 @@ img {
   border-radius: 6px;
 
   position: absolute;
-  z-index: 1;
+  z-index: 100;
 
   width: 136px;
   top: 125%;
@@ -177,6 +177,7 @@ img {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+  z-index: 100;
 }
 
 /* Whitespace */
