@@ -2,7 +2,7 @@ const site = ({
   name: 'EZ Balance Sheet',
   siteOwner: 'Silas Reinagel',
   owner: 'Silas Reinagel',
-  slogan: 'Simplest Overview of your Personal Finances',
+  slogan: 'Easiest Overview of your Personal Finances',
   email: 'cursedgem.game@gmail.com',
   logo: './favicon.png',
   logoMobile: './favicon.png',

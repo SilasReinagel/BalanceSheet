@@ -1,6 +1,8 @@
 module.exports = {
-    name: 'Exablast Web Design | Handcrafted, Blazingly Fast Websites that Convert',
-    url: 'https://www.exablast.com',
+    name: 'EZ Balance Sheet',
+    url: 'https://ezbalancesheet.app',
     image: 'https://www.exablast.com/favicon/android-icon-192x192.png',
-    description: 'Design. Create. Evolve.'
+    description: 'Easiest Overview of your Personal Finances',
+    twitterUsername: 'SilasReinagel',
+    keywords: 'balance sheet,personal finance,rich dad poor dad,fintech,personal finances'
 };

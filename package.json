@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "build:prod": "rollup -c && node postbuild.js",
     "start": "sirv public --no-clear",
     "app": "electron .",
     "validate": "svelte-check"
