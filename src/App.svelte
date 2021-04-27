@@ -6,6 +6,7 @@
 	import PrivacySummary from './PrivacySummary.svelte';
 	import TextFileUpload from './Elements/TextFileUpload.svelte';
 	import IconButton from './Elements/IconButton.svelte';
+	import FeedbackForm from './Elements/FeedbackForm.svelte';
 	import saveFile from './Backend/SaveTxtFile.js';
 
 	const createNewBalanceSheet = () => balanceSheet([{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }]);
@@ -53,6 +54,7 @@
 		</div>
 		<Summary balanceSheet={sheet}/>
 		<div class="spacer-2"/>
+		<FeedbackForm/>
 	</DefaultLayout>
 </main>
 

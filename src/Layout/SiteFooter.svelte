@@ -23,7 +23,7 @@
     background-color: var(--primary-background-color);
     color: #dedede;
 
-    max-width: 64em;
+    max-width: 48em;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
