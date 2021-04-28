@@ -7,6 +7,7 @@
 	import TextFileUpload from './Elements/TextFileUpload.svelte';
 	import IconButton from './Elements/IconButton.svelte';
 	import FeedbackForm from './Elements/FeedbackForm.svelte';
+	import ProductHunt from './Elements/ProductHunt.svelte';
 	import saveFile from './Backend/SaveTxtFile.js';
 
 	const createNewBalanceSheet = () => balanceSheet([{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }], [{ id: 0, name: "", amount: "" }]);
@@ -53,6 +54,9 @@
 			<EntryTable name="Liabilities" data={sheet.liabilities} onDataChanged={d => sheet.updated(() => sheet.liabilities = d)}/>
 		</div>
 		<Summary balanceSheet={sheet}/>
+		<div class="center-vh product-hunt">
+			<ProductHunt/>
+		</div>
 		<div class="spacer-2"/>
 		<FeedbackForm/>
 	</DefaultLayout>
@@ -65,8 +69,12 @@
 		margin: 0 auto;
 	}
 
+	.product-hunt {
+		height: 180px;
+	}
+
 	.spacer-2 {
-		height: 8em;
+		height: 4em;
 	}
 
 	.tiles {
