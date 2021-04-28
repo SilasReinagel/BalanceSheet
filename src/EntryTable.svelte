@@ -52,6 +52,7 @@
     <tr>
       <td class="left"><b>Total:</b></td>
       <td class="left"><b>{dollars(total)}</b></td>
+      <td></td>
     </tr>
   </table>
 </div>
@@ -73,7 +74,12 @@
     margin: 0.2em 0 0.4em 0;
   }
 
+  td {
+    border: 1px solid grey;
+  }
+
   th {
+    border: 1px solid grey;
     max-width: 100px;
   }
 

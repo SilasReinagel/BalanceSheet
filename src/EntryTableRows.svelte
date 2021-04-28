@@ -34,7 +34,7 @@
     <td class="left">
       <input type="number" value={d.amount} on:change={e => updateAmount(e, d.id)}/>
     </td>
-    <button tabindex="-1" on:click={e => removeRow(e, d.id)}><b>X</b></button>
+    <td><button tabindex="-1" on:click={e => removeRow(e, d.id)}><b>X</b></button></td>
   </tr>
 {/each}
 
@@ -46,8 +46,7 @@
   td {
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid grey;
-    border-right: 1px solid grey;
+    border: 1px solid grey;
   }
 
   input {
