@@ -19,7 +19,7 @@
       <div hidden aria-hidden="true">
         <label>Don’t fill this out if you're human: <input name="bot-field"/></label>
       </div>
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="feedback" />
       <textarea name="message" placeholder="Your Message"/>
       <button class="send-button" type="submit"><h3>Send</h3></button>
     </form>
