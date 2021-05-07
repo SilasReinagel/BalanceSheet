@@ -10,19 +10,23 @@
 
   const updateName = (e, id) => {
     const val = e.target.value;
-    localData[id].name = val;
+    localData[getIndex(id)].name = val;
     setData(localData);
   }
 
   const updateAmount = (e, id) => {
-    const val = e.target.value;
-    localData[id].amount = val;
+    console.log("Update Amount")
+    const val = e.target.value.replace("$", "").replace(",", "");
+    console.log(val);
+    localData[getIndex(id)].amount = val;
     setData(localData);
   }
 
   const removeRow = (e, id) => {
-    setData(localData.splice(id, 1));
+    setData(localData.filter(d => d.id != id));
   }
+
+  const getIndex = (id) => localData.findIndex(e => e.id === id);
 
 </script>
 
@@ -32,9 +36,13 @@
       <input type="string" value={d.name} on:change={e => updateName(e, d.id)}/>
     </td>
     <td class="left">
-      <input type="number" value={d.amount} on:change={e => updateAmount(e, d.id)}/>
+      <input type="string" value={d.amount} on:change={e => updateAmount(e, d.id)}/>
     </td>
-    <td><button tabindex="-1" on:click={e => removeRow(e, d.id)}><b>X</b></button></td>
+    <td>
+      {#if localData.length > 1} 
+        <button tabindex="-1" on:click={e => removeRow(e, d.id)}><b>X</b></button>
+      {/if}
+    </td>
   </tr>
 {/each}
 
